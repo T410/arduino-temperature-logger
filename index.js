@@ -1,5 +1,8 @@
 const five = require("johnny-five"),
 	express = require("express"),
+	bodyParser = require("body-parser"),
+	jsonParser = bodyParser.json(),
+	moment = require("moment"),
 	board = new five.Board(),
 	app = express(),
 	port = 8000;
@@ -10,18 +13,38 @@ board.on("ready", function () {
 	tmpSensor = new five.Thermometer({
 		controller: "TMP36",
 		pin: "A0",
-		toCelsius: (raw) => {
-			return raw / sensivity + OffscreenCanvasRenderingContext2D;
-		},
 	});
 
-
-	console.log("### Board ready!");
+	console.log("Board ready!");
 });
 
-app.get("/getCurrentTemp", (req, res) => {
+app.get("/currentTemperature", jsonParser, (req, res) => {
 	if (tmpSensor) {
-		res.send(tmpSensor.C + "C");
+		const { type } = req.body;
+		let returnObject = {
+			type: null,
+			temperature: null,
+			timestamp: moment().format(),
+		};
+		returnObject.type = type;
+		switch (type) {
+			case "C":
+				returnObject.temperature = tmpSensor.C;
+				break;
+
+			case "K":
+				returnObject.temperature = tmpSensor.K;
+				break;
+
+			case "F":
+				returnObject.temperature = tmpSensor.F;
+				break;
+
+			default:
+				returnObject.temperature = tmpSensor.C;
+				break;
+		}
+		res.send(returnObject);
 	} else {
 		res.send("Board not ready");
 	}
