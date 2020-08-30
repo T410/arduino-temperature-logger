@@ -1,0 +1,24 @@
+{
+  "name": "arduino-temperature-logger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/T410/arduino-temperature-logger.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/T410/arduino-temperature-logger/issues"
+  },
+  "homepage": "https://github.com/T410/arduino-temperature-logger#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "johnny-five": "^2.0.0"
+  }
+}
