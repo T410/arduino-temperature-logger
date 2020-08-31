@@ -41,6 +41,7 @@ app.get("/currentTemperature", jsonParser, (req, res) => {
 				break;
 
 			default:
+				returnObject.type = "C";
 				returnObject.temperature = tmpSensor.C;
 				break;
 		}
