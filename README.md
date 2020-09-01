@@ -10,10 +10,10 @@ This is a hobby project developed by me to log the maximum and minumum temperatu
 ## Docs
 ### GET/currentTemperature
 To retrieve current temperature data from the sensor
-### type[optional]
+##### type[optional]
 Send type in body as raw JSON as `C, K or F`. If not set default data will be in Celsius (`C`).
 
-### returns
+##### returns
 ```
 {
     "type": "C",
