@@ -5,7 +5,7 @@ const five = require("johnny-five"),
 	moment = require("moment"),
 	board = new five.Board(),
 	app = express(),
-	port = 8000;
+	port = 8080;
 
 let tmpSensor = null;
 
